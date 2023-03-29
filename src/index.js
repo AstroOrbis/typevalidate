@@ -1,5 +1,3 @@
-
-
 class DataType {
 	constructor() {
 		this.name = null;

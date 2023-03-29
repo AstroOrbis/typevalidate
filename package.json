@@ -20,9 +20,6 @@
 		"url": "https://github.com/AstroOrbis/typevalidate/issues"
 	},
 	"homepage": "https://github.com/AstroOrbis/typevalidate#readme",
-	"publishConfig": {
-		"@astroorbis:registry": "https://npm.pkg.github.com"
-	},
 	"devDependencies": {
 		"mocha": "^10.2.0"
 	}
