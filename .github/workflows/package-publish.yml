@@ -3,7 +3,7 @@ on:
     types: [created]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,7 +14,7 @@ jobs:
       - run: npm test
 
   publish-gpr:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -31,7 +31,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   publish-npm:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
