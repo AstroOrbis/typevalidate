@@ -13,6 +13,19 @@ describe("DataType", () => {
 			assert.deepEqual(copyEmail.regexes, {});
 		});
 	});
+
+	describe("setSearchType", () => {
+		it("should set and get the search type", () => {
+			const validator = email.setSearchType("all");
+			assert.equal(validator.searchtype, "all");
+		});
+
+		it("should throw an error if the search type is not 'one' or 'all'", () => {
+			assert.throws(() => {
+				new DataType().setSearchType("invalid_search_type");
+			}, Error);
+		});
+	});
 });
 
 describe("Validator", () => {
@@ -26,20 +39,6 @@ describe("Validator", () => {
 			const validator = new Validator();
 			assert.throws(() => {
 				validator.setDatatype("email");
-			}, Error);
-		});
-	});
-
-	describe("setSearchType", () => {
-		it("should set and get the search type", () => {
-			const validator = new Validator().setSearchType("all");
-			assert.equal(validator.searchtype, "all");
-		});
-
-		it("should throw an error if the search type is not 'one' or 'all'", () => {
-			const validator = new Validator();
-			assert.throws(() => {
-				validator.setSearchType("invalid_search_type");
 			}, Error);
 		});
 	});
@@ -59,8 +58,9 @@ describe("Validator", () => {
 			const customDataType = new DataType()
 				.setName("custom")
 				.addRegex("pattern1", /^\d+$/)
-				.addRegex("pattern2", /^[a-zA-Z]+$/);
-			const validator = new Validator().setDatatype(customDataType).setSearchType("one");
+				.addRegex("pattern2", /^[a-zA-Z]+$/)
+				.setSearchType("one");
+			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("123"), true);
 			assert.strictEqual(validator.validate("abc"), true);
 		});
@@ -69,8 +69,9 @@ describe("Validator", () => {
 			const customDataType = new DataType()
 				.setName("custom")
 				.addRegex("pattern1", /^\d+$/)
-				.addRegex("pattern2", /^[a-zA-Z]+$/);
-			const validator = new Validator().setDatatype(customDataType).setSearchType("one");
+				.addRegex("pattern2", /^[a-zA-Z]+$/)
+				.setSearchType("one");
+			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("123abc"), false);
 		});
 
@@ -78,8 +79,9 @@ describe("Validator", () => {
 			const customDataType = new DataType()
 			.setName("custom")
 			.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
-			.addRegex("pattern2", /^.{3,}$/);
-		const validator = new Validator().setDatatype(customDataType).setSearchType("all");
+			.addRegex("pattern2", /^.{3,}$/)
+			.setSearchType("all");
+		const validator = new Validator().setDatatype(customDataType);
 		assert.strictEqual(validator.validate("abc123"), true);
 	});
 
@@ -87,8 +89,9 @@ describe("Validator", () => {
 			const customDataType = new DataType()
 				.setName("custom")
 				.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
-				.addRegex("pattern2", /^.{6,}$/);
-			const validator = new Validator().setDatatype(customDataType).setSearchType("all");
+				.addRegex("pattern2", /^.{6,}$/)
+				.setSearchType("all");
+			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("abc12"), false);
 		});
 	});

@@ -2,6 +2,7 @@ class DataType {
 	constructor() {
 		this.name = null;
 		this.regexes = {};
+		this.searchtype = "one";
 	}
 
 	/**
@@ -31,28 +32,6 @@ class DataType {
 		delete this.regexes[regexName];
 		return this;
 	}
-}
-
-
-class Validator {
-	constructor() {
-		this.datatype = null;
-		this.searchtype = "one";
-	}
-
-	/**
-	 * Sets the DataType instance for the Validator.
-	 * @param {DataType} datatype - The DataType instance.
-	 * @throws {Error} - Throws an error if the datatype is not an instance of DataType.
-	 */
-	setDatatype(datatype) {
-		if (datatype instanceof DataType) {
-			this.datatype = datatype;
-		} else {
-			throw new Error(`Invalid datatype ${datatype}`);
-		}
-		return this;
-	}
 
 	/**
 	 * 
@@ -70,6 +49,28 @@ class Validator {
 		return this;
 
 	}
+}
+
+
+class Validator {
+	constructor() {
+		this.datatype = null;
+	}
+
+	/**
+	 * Sets the DataType instance for the Validator.
+	 * @param {DataType} datatype - The DataType instance.
+	 * @throws {Error} - Throws an error if the datatype is not an instance of DataType.
+	 */
+	setDatatype(datatype) {
+		if (datatype instanceof DataType) {
+			this.datatype = datatype;
+		} else {
+			throw new Error(`Invalid datatype ${datatype}`);
+		}
+		return this;
+	}
+
 
 	/**
 	 * Validates that a value is the correct type.
@@ -79,14 +80,14 @@ class Validator {
 	validate(value) {
 		const regexes = this.datatype.regexes;
 
-		if (this.searchtype === "one") {
+		if (this.datatype.searchtype === "one") {
 
 			for (const regexName in regexes) {
 				if (regexes[regexName].test(value)) {
 					return true;
 				}
 			}
-		} else if (this.searchtype === "all") {
+		} else if (this.datatype.searchtype === "all") {
 
 			for (const regexName in regexes) {
 				if (!regexes[regexName].test(value)) {
@@ -107,6 +108,6 @@ module.exports = {
 	datatypes: {
 		email: new DataType()
 			.setName("email")
-			.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+			.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/),
 	}
 };
