@@ -1,6 +1,6 @@
 {
 	"name": "@astroorbis/typevalidate",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A simple JavaScript library allowing you to validate your data!",
 	"main": "src/index.js",
 	"scripts": {

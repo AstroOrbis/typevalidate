@@ -76,7 +76,7 @@ class Validator {
 	/**
 	 * Validates that a value is the correct type.
 	 * @param {string} value - The value to validate.
-	 * @returns {boolean} - Returns true if the value matches any of the regex patterns, false otherwise.
+	 * @returns {boolean} - Returns true if the value matches (depending on the searchtype, any/one) of the regex patterns, false otherwise.
 	 */
 	validate(value) {
 		const regexes = this.datatype.regexes;
@@ -96,6 +96,8 @@ class Validator {
 				}
 			}
 			return true;
+		} else {
+			throw new Error(`Invalid search type ${this.searchtype} | Valid types are "one" and "all"`);
 		}
 		return false;
 	}
