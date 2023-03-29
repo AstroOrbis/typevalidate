@@ -106,4 +106,9 @@ class Validator {
 module.exports = {
 	Validator,
 	DataType,
+	datatypes: {
+		email: new DataType()
+			.setName("email")
+			.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+	}
 };

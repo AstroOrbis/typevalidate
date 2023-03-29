@@ -1,9 +1,7 @@
 const assert = require("assert");
-const { Validator, DataType } = require("../src/index.js");
+const { Validator, DataType, datatypes } = require("../src");
 
-const email = new DataType()
-	.setName("email")
-	.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/);
+const email = datatypes.email
 
 describe("DataType", () => {
 	describe("removeRegex", () => {
