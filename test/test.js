@@ -12,16 +12,16 @@ describe("DataType", () => {
 				.setName("email")
 				.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/);
 			copyEmail.removeRegex("email");
-			assert.deepEqual(copyEmail.getRegexes(), {});
+			assert.deepEqual(copyEmail.regexes, {});
 		});
 	});
 });
 
 describe("Validator", () => {
 	describe("setDatatype", () => {
-		it("should set and get the datatype", () => {
+		it("should set the datatype", () => {
 			const validator = new Validator().setDatatype(email);
-			assert.equal(validator.getDatatype(), email);
+			assert.equal(validator.datatype, email);
 		});
 
 		it("should throw an error if the datatype is not an instance of DataType", () => {
@@ -32,10 +32,10 @@ describe("Validator", () => {
 		});
 	});
 
-	describe("setSearchType and getSearchType", () => {
+	describe("setSearchType", () => {
 		it("should set and get the search type", () => {
 			const validator = new Validator().setSearchType("all");
-			assert.equal(validator.getSearchType(), "all");
+			assert.equal(validator.searchtype, "all");
 		});
 
 		it("should throw an error if the search type is not 'one' or 'all'", () => {

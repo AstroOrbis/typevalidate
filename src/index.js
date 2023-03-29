@@ -79,7 +79,7 @@ class Validator {
 	 * @returns {boolean} - Returns true if the value matches any of the regex patterns, false otherwise.
 	 */
 	validate(value) {
-		const regexes = this.datatype.getRegexes();
+		const regexes = this.datatype.regexes;
 
 		if (this.searchtype === "one") {
 
