@@ -16,14 +16,6 @@ class DataType {
 	}
 
 	/**
-	 * Gets the name of the DataType instance.
-	 * @returns {string} - The name of the DataType.
-	 */
-	getName() {
-		return this.name;
-	}
-
-	/**
 	 * Adds a new regex pattern to the DataType instance.
 	 * @param {string} name - The name of the regex pattern.
 	 * @param {RegExp} regex - The regex pattern.
@@ -31,14 +23,6 @@ class DataType {
 	addRegex(name, regex) {
 		this.regexes[name] = regex;
 		return this;
-	}
-
-	/**
-	 * Gets all regex patterns in the DataType instance.
-	 * @returns {Object} - The regex patterns.
-	 */
-	getRegexes() {
-		return this.regexes;
 	}
 
 	/**
@@ -73,14 +57,6 @@ class Validator {
 	}
 
 	/**
-	 * Gets the DataType instance for the Validator.
-	 * @returns {DataType} - The DataType instance.
-	 */
-	getDatatype() {
-		return this.datatype;
-	}
-
-	/**
 	 * 
 	 * @param {string} type - The search type. Valid types are "one" and "all" (One regex must match, or all regexes must match).
 	 * @throws {Error} - Throws an error if the search type is not "one" or "all".
@@ -95,14 +71,6 @@ class Validator {
 
 		return this;
 
-	}
-
-	/**
-	 *  Gets the search type for the Validator.
-	 * @returns {string} - The search type.
-	 */
-	getSearchType() {
-		return this.searchtype;
 	}
 
 	/**
