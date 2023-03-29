@@ -1,6 +1,5 @@
-/**
- * DataType class represents a custom data type with a set of regex patterns.
- */
+
+
 class DataType {
 	constructor() {
 		this.name = null;
@@ -52,9 +51,7 @@ class DataType {
 	}
 }
 
-/**
- * Validator class is responsible for validating values based on a DataType instance.
- */
+
 class Validator {
 	constructor() {
 		this.datatype = null;
@@ -83,6 +80,11 @@ class Validator {
 		return this.datatype;
 	}
 
+	/**
+	 * 
+	 * @param {string} type - The search type. Valid types are "one" and "all" (One regex must match, or all regexes must match).
+	 * @throws {Error} - Throws an error if the search type is not "one" or "all".
+	 */
 	setSearchType(type) {
 
 		if (type === "one" || type === "all") {
@@ -95,12 +97,16 @@ class Validator {
 
 	}
 
+	/**
+	 *  Gets the search type for the Validator.
+	 * @returns {string} - The search type.
+	 */
 	getSearchType() {
 		return this.searchtype;
 	}
 
 	/**
-	 * Validates a value based on the DataType instance's regex patterns.
+	 * Validates that a value is the correct type.
 	 * @param {string} value - The value to validate.
 	 * @returns {boolean} - Returns true if the value matches any of the regex patterns, false otherwise.
 	 */
