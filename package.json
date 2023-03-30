@@ -1,10 +1,11 @@
 {
 	"name": "@astroorbis/typevalidate",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "A simple JavaScript library allowing you to validate your data!",
 	"main": "src/index.js",
 	"scripts": {
-		"test": "mocha"
+		"test": "mocha",
+		"prettier": "prettier --write \"src/**/*.js\" \"test/**/*.js\" \"package.json\""
 	},
 	"repository": {
 		"type": "git",
@@ -21,6 +22,12 @@
 	},
 	"homepage": "https://github.com/AstroOrbis/typevalidate#readme",
 	"devDependencies": {
+		"chai": "^4.3.7",
 		"mocha": "^10.2.0"
+	},
+	"prettier": {
+		"singleQuote": false,
+		"useTabs": true,
+		"semi": true
 	}
 }

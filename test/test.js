@@ -1,14 +1,17 @@
 const assert = require("assert");
 const { Validator, DataType, datatypes } = require("../src");
 
-const email = datatypes.email
+const email = datatypes.email;
 
 describe("DataType", () => {
 	describe("removeRegex", () => {
 		it("should remove a regex by its name", () => {
 			const copyEmail = new DataType()
 				.setName("email")
-				.addRegex("email", /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/);
+				.addRegex(
+					"email",
+					/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+				);
 			copyEmail.removeRegex("email");
 			assert.deepEqual(copyEmail.regexes, {});
 		});
@@ -77,13 +80,13 @@ describe("Validator", () => {
 
 		it("should return true if all regexes in the DataType match when search type is 'all'", () => {
 			const customDataType = new DataType()
-			.setName("custom")
-			.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
-			.addRegex("pattern2", /^.{3,}$/)
-			.setSearchType("all");
-		const validator = new Validator().setDatatype(customDataType);
-		assert.strictEqual(validator.validate("abc123"), true);
-	});
+				.setName("custom")
+				.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
+				.addRegex("pattern2", /^.{3,}$/)
+				.setSearchType("all");
+			const validator = new Validator().setDatatype(customDataType);
+			assert.strictEqual(validator.validate("abc123"), true);
+		});
 
 		it("should return false if not all regexes in the DataType match when search type is 'all'", () => {
 			const customDataType = new DataType()
