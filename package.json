@@ -5,7 +5,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"test": "mocha",
-		"prettier": "prettier --write \"src/**/*.js\" \"test/**/*.js\" \"package.json\""
+		"lint": "eslint src/**/*.js test/**/*.js --fix"
 	},
 	"repository": {
 		"type": "git",
@@ -23,11 +23,7 @@
 	"homepage": "https://github.com/AstroOrbis/polycheck#readme",
 	"devDependencies": {
 		"chai": "^4.3.7",
+		"eslint": "^8.37.0",
 		"mocha": "^10.2.0"
-	},
-	"prettier": {
-		"singleQuote": false,
-		"useTabs": true,
-		"semi": true
 	}
 }
