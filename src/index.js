@@ -3,6 +3,7 @@ class DataType {
 		this.name = null;
 		this.regexes = {};
 		this.searchtype = "one";
+		this.validsearchtypes = ["one", "all"];
 	}
 
 	/**
