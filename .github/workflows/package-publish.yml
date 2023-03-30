@@ -1,3 +1,5 @@
+name: Publish packages to repos
+
 on:
   release:
     types: [created]
