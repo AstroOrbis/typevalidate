@@ -1,7 +1,7 @@
 {
-	"name": "@astroorbis/typevalidate",
-	"version": "0.0.9",
-	"description": "A simple JavaScript library allowing you to validate your data!",
+	"name": "@astroorbis/polycheck",
+	"version": "0.1.0",
+	"description": "A simple JavaScript library allowing you to validate many different datatypes!",
 	"main": "src/index.js",
 	"scripts": {
 		"test": "mocha",
@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/AstroOrbis/typevalidate.git"
+		"url": "git+https://github.com/AstroOrbis/polycheck.git"
 	},
 	"keywords": [
 		"validate",
@@ -18,9 +18,9 @@
 	"author": "Astro Orbis",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/AstroOrbis/typevalidate/issues"
+		"url": "https://github.com/AstroOrbis/polycheck/issues"
 	},
-	"homepage": "https://github.com/AstroOrbis/typevalidate#readme",
+	"homepage": "https://github.com/AstroOrbis/polycheck#readme",
 	"devDependencies": {
 		"chai": "^4.3.7",
 		"mocha": "^10.2.0"

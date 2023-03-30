@@ -54,7 +54,7 @@ jobs:
       - name: Change package name to work with npm
         uses: jaywcjlove/github-action-package@main
         with:
-          rename: "typevalidate"
+          rename: "polycheck"
       
       - name: Install dependents
         run: npm ci

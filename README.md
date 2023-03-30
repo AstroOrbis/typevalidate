@@ -1,3 +1,3 @@
-# typevalidate
+# PolyCheck
 
-A simple JavaScript library allowing you to validate your data!
+A simple JavaScript library allowing you to validate many different datatypes!
