@@ -59,7 +59,10 @@ jobs:
       - name: Install dependents
         run: npm ci
 
+      - name: Verify login
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Publish to NPM
-        uses: pascalgn/npm-publish-action@1.3.9
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
