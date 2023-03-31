@@ -26,6 +26,23 @@ class DataType {
 	}
 
 	/**
+	 * Adds multiple regex patterns to the DataType instance.
+	 * @param {Object} regexes - An object containing the regex patterns.
+	 * @example
+	 * const regexes = {
+	 * 	"regex1": /regex1/,
+	 * 	"regex2": /regex2/
+	 * }
+	 * dataType.addRegexes(regexes);
+	 */
+	addRegexes(regexes) {
+		for (const regexName in regexes) {
+			this.regexes[regexName] = regexes[regexName];
+		}
+		return this;
+	}
+
+	/**
 	 * Removes a regex pattern from the DataType instance.
 	 * @param {string} regexName - The name of the regex pattern to remove.
 	 */
