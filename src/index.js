@@ -1,6 +1,6 @@
 class DataType {
 	constructor() {
-		this.name = null;
+		this.dtname = null;
 		this.regexes = {};
 		this.searchtype = "one";
 		this.validsearchtypes = ["one", "all"];
@@ -10,7 +10,7 @@ class DataType {
 	 * Sets the name of the DataType instance.
 	 * @param {string} name - The name of the DataType.
 	 */
-	setName(name) {
+	name(name) {
 		this.name = name;
 		return this;
 	}
@@ -56,7 +56,7 @@ class DataType {
 	 * @param {string} type - The search type. Valid types are "one" and "all" (One regex must match, or all regexes must match).
 	 * @throws {Error} - Throws an error if the search type is not "one" or "all".
 	 */
-	setSearchType(type) {
+	searchType(type) {
 		if (type === "one" || type === "all") {
 			this.searchtype = type;
 		} else {
@@ -123,30 +123,30 @@ module.exports = {
 	DataType,
 	datatypes: {
 		email: new DataType()
-			.setName("email")
+			.name("email")
 			.addRegex(
 				"email",
 				/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 			),
 		phone: new DataType()
-			.setName("phone")
+			.name("phone")
 			.addRegex("With dashes", /^\+?\d{0,}\d{2}-?\d{3}-?\d{4}$/)
 			.addRegex("Without dashes", /^\+?\d{0,}\d{9}$/)
-			.setSearchType("one"),
+			.searchType("one"),
 
 		postalCode: new DataType()
-			.setName("postalCode")
+			.name("postalCode")
 			.addRegex("Postal code", /^\d{5}(-\d{4})?$/),
 
 		ipv4: new DataType()
-			.setName("ipv4")
+			.name("ipv4")
 			.addRegex(
 				"ipv4",
 				/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
 			),
 
 		ipv6: new DataType()
-			.setName("ipv6")
+			.name("ipv6")
 			.addRegex("Full form", /^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$/)
 			.addRegex("With trailing double colon", /^([0-9a-fA-F]{1,4}:){1,7}:$/)
 			.addRegex(
@@ -186,6 +186,6 @@ module.exports = {
 				"IPv4-embedded IPv6 address",
 				/^([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])$/
 			)
-			.setSearchType("one"),
+			.searchType("one"),
 	},
 };

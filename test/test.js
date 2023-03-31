@@ -8,7 +8,7 @@ describe("DataType", () => {
 	describe("removeRegex", () => {
 		it("should remove a regex by its name", () => {
 			const copyEmail = new DataType()
-				.setName("email")
+				.name("email")
 				.addRegex(
 					"email",
 					/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
@@ -20,13 +20,13 @@ describe("DataType", () => {
 
 	describe("setSearchType", () => {
 		it("should set and get the search type", () => {
-			const validator = email.setSearchType("all");
+			const validator = email.searchType("all");
 			assert.equal(validator.searchtype, "all");
 		});
 
 		it("should throw an error if the search type is not 'one' or 'all'", () => {
 			assert.throws(() => {
-				new DataType().setSearchType("invalid_search_type");
+				new DataType().searchType("invalid_search_type");
 			}, Error);
 		});
 	});
@@ -60,10 +60,10 @@ describe("Validator", () => {
 
 		it("should return true if any regex in the DataType matches when search type is 'one'", () => {
 			const customDataType = new DataType()
-				.setName("custom")
+				.name("custom")
 				.addRegex("pattern1", /^\d+$/)
 				.addRegex("pattern2", /^[a-zA-Z]+$/)
-				.setSearchType("one");
+				.searchType("one");
 			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("123"), true);
 			assert.strictEqual(validator.validate("abc"), true);
@@ -71,30 +71,30 @@ describe("Validator", () => {
 
 		it("should return false if none of the regexes in the DataType match when search type is 'one'", () => {
 			const customDataType = new DataType()
-				.setName("custom")
+				.name("custom")
 				.addRegex("pattern1", /^\d+$/)
 				.addRegex("pattern2", /^[a-zA-Z]+$/)
-				.setSearchType("one");
+				.searchType("one");
 			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("123abc"), false);
 		});
 
 		it("should return true if all regexes in the DataType match when search type is 'all'", () => {
 			const customDataType = new DataType()
-				.setName("custom")
+				.name("custom")
 				.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
 				.addRegex("pattern2", /^.{3,}$/)
-				.setSearchType("all");
+				.searchType("all");
 			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("abc123"), true);
 		});
 
 		it("should return false if not all regexes in the DataType match when search type is 'all'", () => {
 			const customDataType = new DataType()
-				.setName("custom")
+				.name("custom")
 				.addRegex("pattern1", /^[a-zA-Z0-9]+$/)
 				.addRegex("pattern2", /^.{6,}$/)
-				.setSearchType("all");
+				.searchType("all");
 			const validator = new Validator().setDatatype(customDataType);
 			assert.strictEqual(validator.validate("abc12"), false);
 		});
