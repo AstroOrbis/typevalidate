@@ -25,4 +25,5 @@ git push
 
 sleep 2
 
+echo "Creating release $NEW_VERSION on GitHub..."
 gh release create 
